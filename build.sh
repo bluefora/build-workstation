@@ -3,8 +3,8 @@
 set -ouex pipefail
 
 # Update release file
-#sed -i -e "s/Silverblue/${OS_NAME:=Bluefora}/g" /usr/lib/os-release
-sed -i -e "s/ID=fedora/ID=${BUILD_ID:=unknown}/g" /etc/os-release
+sed -i -e "s/Silverblue/${OS_NAME:=Bluefora}/g" /usr/lib/os-release
+#sed -i -e "s/ID=fedora/ID=${BUILD_ID:=unknown}/g" /etc/os-release
 sed -i -e "s/^DEFAULT_HOSTNAME=.*/DEFAULT_HOSTNAME=${OS_ID:=bluefora}/g" /etc/os-release
 sed -i -e "s/^PRETTY_NAME=.*/PRETTY_NAME=\"${OS_NAME:=Bluefora} Linux ${OS_VERSION:=41} (${BUILD_NAME:=Unkown)})\"/g" /etc/os-release
 
