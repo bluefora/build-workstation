@@ -3,10 +3,11 @@
 set -ouex pipefail
 
 # Update release file
-sed -i -e "s/ID=silverblue/ID=${BUILD_ID:=unknown}/g" /usr/lib/os-release
-sed -i -e "s/Silverblue/${OS_NAME:=Bluefora}/g" /usr/lib/os-release
-sed -i -e "s/Fedora Linux 41 (Workstation Edition)/$OS_NAME Linux 41 (${BUILD_NAME:=Unkown} Edition)/g" /usr/lib/os-release
-sed -i -e "s/DEFAULT_HOSTNAME="fedora"/DEFAULT_HOSTNAME="${OS_ID:=bluefora}"/g" /usr/lib/os-release
+#sed -i -e "s/Silverblue/${OS_NAME:=Bluefora}/g" /usr/lib/os-release
+sed -i -e "s/^ID=.*/ID=${BUILD_ID:=unknown}/g" /etc/os-release
+sed -i -e "s/^DEFAULT_HOSTNAME=.*/DEFAULT_HOSTNAME=${OS_ID:=bluefora}/g" /etc/os-release
+sed -i -e "s/^PRETTY_NAME=.*/PRETTY_NAME=\"${OS_NAME} Linux ${OS_VERSION:=41} (${BUILD_NAME)})\"/g" /etc/os-release
+
 
 rpm-ostree ex rebuild
 
