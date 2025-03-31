@@ -1,0 +1,7 @@
+[org.gnome.desktop.background]
+color-shading-type='solid'
+picture-options='zoom'
+picture-uri='file:///usr/share/backgrounds/bluefora/bluefora-light.jpg'
+picture-uri-dark='file:///usr/share/backgrounds/bluefora/bluefora-dark.jpg'
+primary-color='#51a2da'
+secondary-color='#294172'

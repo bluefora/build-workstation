@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE wallpapers SYSTEM "gnome-wp-list.dtd">
+<wallpapers>
+    <wallpaper deleted="false">
+        <name>Bluefora Workstation Default</name>
+        <filename>/usr/share/backgrounds/bluefora/bluefora-light.png</filename>
+        <filename-dark>/usr/share/backgrounds/bluefora/bluefora-dark.png</filename-dark>
+        <options>zoom</options>
+        <shade_type>solid</shade_type>
+        <pcolor>#51a2da</pcolor>
+        <scolor>#294172</scolor>
+    </wallpaper>
+</wallpapers>
+
