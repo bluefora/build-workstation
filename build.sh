@@ -20,6 +20,10 @@ dnf5 -y remove \
     gnome-backgrounds \
     nvtop htop
 
+# Firefox cleanup
+rm -r /etc/skel/.mozilla
+
+# Cleanup backgrounds
 files=(flight futurecity glasscurtains mermaid montclair petals)
 for file in "${files[@]}"; do
     rm /usr/share/gnome-background-properties/${file}.xml
