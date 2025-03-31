@@ -55,7 +55,7 @@ typeset MODULES=(quicksetup wallpapers wallpaper-cycler)
 
 for module in "${MODULES[@]}"; do
     # Clone the repo and copy the files
-    git clone https://github.com/bluefora/${module} /tmp/${module}
+    git clone -b $BRANCH https://github.com/bluefora/${module} /tmp/${module}
     rsync -av --keep-dirlinks /tmp/${module}/rootcopy/* /
 
     # Try run the build script
