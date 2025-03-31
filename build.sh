@@ -54,7 +54,7 @@ for module in "${MODULES[@]}"; do
     rsync -av --keep-dirlinks /tmp/${module}/rootcopy/* /
 
     # Try run the build script
-    if [[ -f /tmp/${module}/build.sh ]]; thent
+    if [[ -f /tmp/${module}/build.sh ]]; then
         bash /tmp/${module}/build.sh
     fi
 done
