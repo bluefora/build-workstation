@@ -1,0 +1,5 @@
+[org/gnome/desktop/input-sources]
+current=uint32 0
+mru-sources=[('xkb', 'us')]
+sources=[('xkb', 'us+euro')]
+xkb-options=['lv3:ralt_switch']
