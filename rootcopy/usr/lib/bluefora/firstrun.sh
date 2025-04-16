@@ -8,16 +8,32 @@ if rpm-ostree status -b | grep ostree-unverified-registry; then
     SIGN_URI=$(rpm-ostree status -b | grep -A1 "BootedDeployment:" | grep -v "BootedDeployment" | sed -E 's/.+ostree-unverified-registry:(.+)/ostree-image-signed:docker:\/\/\1/')
     echo "Signing installation - This will take a while"
     plymouth display-message --text="Signing installation - This will take a while" || true
-    # shellcheck disable=SC2086
     rpm-ostree rebase $SIGN_URI
-
-    # Notify user that a reboot is necessary, maybe wait first for flatpak to finish!
 fi
 
 # remove flatpak remote
 flatpak remotes | grep fedora
 if [[ $? ]]; then
+    echo "Removing Fedora remote from flatpak"
+    plymouth display-message --text="Removing Fedora remote" || true
     flatpak remote-delete fedora --force
 fi
 
+
+typeset APPS=(
+	[org.gnome.Calculator]="Calculator"
+	[org.gnome.Loupe]="Photos"
+	[org.gnome.TextEditor]="Text Editor"
+	[org.gnome.Totem]="Video Player"
+	[org.mozilla.firefox]="Firefox"
+	[flathub page.tesk.Refine]="Refine"
+)
+for app in "${!APPS[@]}"; do
+    echo "Installing ${APPS[$app]}"
+    plymouth display-message --text="Installing ${APPS[$app]}" || true
+    flatpak install $app
+done
+
+
 rm /etc/bluefora.firstrun
+systemctl reboot

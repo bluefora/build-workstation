@@ -1,0 +1,10 @@
+[Unit]
+Description=Bluefora First Run Service
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /usr/lib/bluefora/firstrun.sh
+ConditionPathExists=/etc/bluefora.firstrun
+
+[Install]
+WantedBy=multi-user.target
