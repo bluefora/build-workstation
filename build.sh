@@ -73,6 +73,7 @@ done
 
 # Update dconf
 dconf update
+glib-compile-schemas /usr/share/glib-2.0/schemas/
 
 # Install codecs
 dnf5 -y swap ffmpeg-free ffmpeg --allowerasing
