@@ -11,7 +11,7 @@ BUILD_NAME=${BUILD_NAME:-Unknown}
 
 # Update release file
 sed -i -e "s/Silverblue/${OS_NAME}/g" /usr/lib/os-release
-sed -i -e "s/^VARIANT_ID=.*/ID=${BUILD_ID}/g" /etc/os-release
+sed -i -e "s/^VARIANT_ID=.*/VARIANT_ID=${BUILD_ID}/g" /etc/os-release
 sed -i -e "s/^DEFAULT_HOSTNAME=.*/DEFAULT_HOSTNAME=${OS_ID}/g" /etc/os-release
 sed -i -e "s/^PRETTY_NAME=.*/PRETTY_NAME=\"${OS_NAME} Linux ${OS_VERSION} (${BUILD_NAME})\"/g" /etc/os-release
 
