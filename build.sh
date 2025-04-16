@@ -2,11 +2,18 @@
 
 set -ouex pipefail
 
+# Variables
+OS_ID=${OS_ID:-bluefora}
+OS_NAME=${OS_NAME:-Bluefora}
+OS_VERSION=`cat /etc/os-release | grep VERSION_ID | cut -d = -f2`
+BUILD_ID=${BUILD_ID:-unknown}
+BUILD_NAME=${BUILD_NAME:-Unknown}
+
 # Update release file
-sed -i -e "s/Silverblue/${OS_NAME:=Bluefora}/g" /usr/lib/os-release
-sed -i -e "s/^VARIANT_ID=.*/ID=${BUILD_ID:=unknown}/g" /etc/os-release
-sed -i -e "s/^DEFAULT_HOSTNAME=.*/DEFAULT_HOSTNAME=${OS_ID:=bluefora}/g" /etc/os-release
-sed -i -e "s/^PRETTY_NAME=.*/PRETTY_NAME=\"${OS_NAME:=Bluefora} Linux ${OS_VERSION:=41} (${BUILD_NAME:=Unkown)})\"/g" /etc/os-release
+sed -i -e "s/Silverblue/${OS_NAME}/g" /usr/lib/os-release
+sed -i -e "s/^VARIANT_ID=.*/ID=${BUILD_ID}/g" /etc/os-release
+sed -i -e "s/^DEFAULT_HOSTNAME=.*/DEFAULT_HOSTNAME=${OS_ID}/g" /etc/os-release
+sed -i -e "s/^PRETTY_NAME=.*/PRETTY_NAME=\"${OS_NAME} Linux ${OS_VERSION} (${BUILD_NAME})\"/g" /etc/os-release
 
 
 rpm-ostree ex rebuild
@@ -15,10 +22,9 @@ rpm-ostree ex rebuild
 dnf5 -y remove \
     firefox \
     firefox-langpacks \
-    f41-backgrounds-gnome \
+    f${OS_VERSION}-backgrounds-gnome \
     desktop-backgrounds-gnome \
     gnome-backgrounds-extras \
-    gnome-backgrounds \
     nvtop htop
 
 # Firefox cleanup
@@ -70,7 +76,3 @@ dconf update
 
 # Install codecs
 dnf5 -y swap ffmpeg-free ffmpeg --allowerasing
-
-
-# Cleanup unused packages
-dnf5 -y remove nvtop htop
