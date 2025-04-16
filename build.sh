@@ -25,7 +25,6 @@ dnf5 -y remove \
     f${OS_VERSION}-backgrounds-gnome \
     desktop-backgrounds-gnome \
     gnome-backgrounds-extras \
-    gnome-backgrounds \
     nvtop htop
 
 # Firefox cleanup
@@ -77,7 +76,3 @@ dconf update
 
 # Install codecs
 dnf5 -y swap ffmpeg-free ffmpeg --allowerasing
-
-
-# Cleanup unused packages
-dnf5 -y remove nvtop htop
