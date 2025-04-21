@@ -12,8 +12,7 @@ if rpm-ostree status -b | grep ostree-unverified-registry; then
 fi
 
 # remove flatpak remote
-flatpak remotes | grep fedora
-if [[ $? ]]; then
+if flatpak remotes | grep fedora; then
     echo "Removing Fedora remote from flatpak"
     plymouth display-message --text="Removing Fedora remote" || true
     flatpak remote-delete fedora --force
@@ -35,5 +34,5 @@ for app in "${!APPS[@]}"; do
 done
 
 
-rm /etc/bluefora.firstrun
+rm -f /etc/bluefora.firstrun
 systemctl reboot

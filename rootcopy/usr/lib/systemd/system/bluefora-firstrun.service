@@ -1,5 +1,7 @@
 [Unit]
 Description=Bluefora First Run Service
+After=systemd-networkd-wait-online.service
+Wants=systemd-networkd-wait-online.service
 
 [Service]
 Type=simple
