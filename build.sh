@@ -41,7 +41,7 @@ ln -s /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
 
 
 # Install Apps and Extensions
-dnf5 -y install gnome-extensions-app \
+dnf5 -y install gnome-extensions-app unrar \
             gnome-shell-extension-appindicator \
             gnome-shell-extension-blur-my-shell \
             gnome-shell-extension-caffeine \
