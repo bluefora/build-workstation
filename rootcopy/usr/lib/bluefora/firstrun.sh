@@ -28,9 +28,11 @@ typeset APPS=(
 	[flathub page.tesk.Refine]="Refine"
 )
 for app in "${!APPS[@]}"; do
-    echo "Installing ${APPS[$app]}"
-    plymouth display-message --text="Installing ${APPS[$app]}" || true
-    flatpak install $app
+    if ! flatpak list | grep $app; then 
+        echo "Installing ${APPS[$app]}"
+        plymouth display-message --text="Installing ${APPS[$app]}" || true
+        flatpak install $app
+    fi
 done
 
 
